@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f5">
+    <meta name="description" content="A curious mind goes places. Explore SmartMind's interactive learning worlds and build skills one mission at a time.">
+    <title>SmartMind — A curious mind goes places</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+        <a class="brand" href="#home" data-view="home" aria-label="SmartMind home">
+          <span class="brand-mark" aria-hidden="true">
+            <img src="assets/smartmind-mark.png" alt="">
+          </span>
+          <span class="brand-copy"><strong>smartmind</strong><small>LEARNING, IN ORBIT</small></span>
+        </a>
+
+        <div class="sidebar-label">YOUR SPACE</div>
+        <nav class="primary-nav">
+          <button class="nav-link active" type="button" data-view="home">
+            <span class="nav-icon" aria-hidden="true">⌂</span><span>My journey</span>
+          </button>
+          <button class="nav-link" type="button" data-view="worlds">
+            <span class="nav-icon" aria-hidden="true">✳</span><span>Explore worlds</span>
+          </button>
+          <button class="nav-link" type="button" data-view="progress">
+            <span class="nav-icon" aria-hidden="true">↗</span><span>My progress</span>
+          </button>
+          <button class="nav-link" type="button" data-view="achievements">
+            <span class="nav-icon" aria-hidden="true">♧</span><span>Achievements</span>
+          </button>
+          <button class="nav-link premium-nav-link" type="button" data-view="premium">
+            <span class="nav-icon" aria-hidden="true">✦</span><span>Premium</span><span class="nav-badge">PREVIEW</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-divider"></div>
+        <div class="sidebar-label">YOUR WORLDS</div>
+        <nav class="world-nav" aria-label="Learning worlds">
+          <button class="world-link" type="button" data-world-filter="logic"><span class="world-dot dot-lilac"></span>Logic Lab</button>
+          <button class="world-link" type="button" data-world-filter="academy"><span class="world-dot dot-blue"></span>Knowledge Academy</button>
+          <button class="world-link" type="button" data-world-filter="business"><span class="world-dot dot-peach"></span>Business District</button>
+          <button class="world-link" type="button" data-world-filter="innovation"><span class="world-dot dot-green"></span>Innovation Workshop</button>
+          <button class="world-link" type="button" data-world-filter="real-life"><span class="world-dot dot-yellow"></span>Real-Life Arena</button>
+          <button class="world-link" type="button" data-world-filter="mastery"><span class="world-dot dot-pink"></span>Mastery Tower</button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <div class="compass-card">
+            <span class="compass-spark" aria-hidden="true">✦</span>
+            <p>Curiosity looks good on you.</p>
+            <span>Keep exploring. Your next big idea is out there.</span>
+          </div>
+          <button class="profile-button" type="button" data-view="progress">
+            <span class="avatar">A</span>
+            <span class="profile-copy"><strong>Alex Morgan</strong><small>Curious explorer</small></span>
+            <span class="profile-more" aria-hidden="true">···</span>
+          </button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
+          <div class="breadcrumb"><span>MY JOURNEY</span><span class="breadcrumb-slash">/</span><strong id="breadcrumbCurrent">Overview</strong></div>
+          <div class="topbar-actions">
+            <div class="streak-pill" title="Days with a completed mission"><span aria-hidden="true">✦</span><strong id="streakCount">0</strong><span>day streak</span></div>
+            <button class="icon-button" id="helpButton" type="button" aria-label="How SmartMind works" title="How SmartMind works">?</button>
+            <span class="top-avatar" aria-label="Alex Morgan">A</span>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section class="view-panel active" id="view-home" aria-labelledby="welcomeTitle">
+            <div class="welcome-row">
+              <div>
+                <p class="eyebrow"><span class="eyebrow-line"></span><span id="todayDate"></span></p>
+                <h1 id="welcomeTitle">Good morning, Alex <span class="wave" aria-hidden="true">✳</span></h1>
+                <p class="welcome-subtitle">A little curiosity can take you a long way. Where to today?</p>
+              </div>
+              <button class="date-chip" type="button" aria-label="Today's date"><span aria-hidden="true">◷</span> YOUR LEARNING DAY</button>
+            </div>
+
+            <div class="hero-card">
+              <div class="hero-copy">
+                <span class="hero-kicker"><span class="live-dot"></span> YOUR NEXT CHAPTER</span>
+                <h2>Small steps.<br><em>Remarkable</em> thinking.</h2>
+                <p>Follow your curiosity, take on a thoughtful challenge, and see what you can figure out.</p>
+                <button class="button button-light" type="button" data-start-challenge="pattern-pilot">Pick up where you left off <span aria-hidden="true">↗</span></button>
+                <div class="hero-footnote"><span class="footnote-icon" aria-hidden="true">✦</span> No rush. Understanding is the real win.</div>
+              </div>
+              <div class="hero-art" aria-hidden="true">
+                <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+                <div class="orbit orbit-three"></div>
+                <div class="planet"><span class="planet-ring"></span><span class="planet-shine"></span></div>
+                <span class="orbit-star star-one">✦</span><span class="orbit-star star-two">✧</span>
+                <span class="orbit-star star-three">·</span><span class="orbit-star star-four">✦</span>
+                <span class="orbit-label">IDEAS<br>IN MOTION</span>
+              </div>
+              <span class="hero-index">01 — 06</span>
+            </div>
+
+            <section class="section-block" aria-labelledby="worldHeading">
+              <div class="section-heading">
+                <div><p class="section-kicker">SIX WORLDS. INFINITE WHAT-IFS.</p><h2 id="worldHeading">Choose your kind of curious</h2></div>
+                <button class="text-link" type="button" data-view="worlds">Explore all worlds <span aria-hidden="true">↗</span></button>
+              </div>
+              <div class="world-grid" id="homeWorldGrid"></div>
+            </section>
+
+            <section class="section-block mission-section" aria-labelledby="missionHeading">
+              <div class="section-heading">
+                <div><p class="section-kicker">A GOOD PLACE TO START</p><h2 id="missionHeading">Made for your next “aha!”</h2></div>
+                <span class="quiet-label">SHORT MISSIONS · REAL SKILLS</span>
+              </div>
+              <div class="mission-grid" id="homeMissionGrid"></div>
+            </section>
+
+            <section class="bottom-strip">
+              <span class="strip-star" aria-hidden="true">✳</span>
+              <div><strong>Progress, not pressure.</strong><p>SmartMind celebrates what you learn, not how fast you get there.</p></div>
+              <button class="text-link" type="button" data-view="progress">See your progress <span aria-hidden="true">→</span></button>
+            </section>
+          </section>
+
+          <section class="view-panel" id="view-worlds" aria-labelledby="worldsTitle">
+            <div class="view-intro">
+              <p class="eyebrow"><span class="eyebrow-line"></span> PICK A PLACE TO WONDER</p>
+              <h1 id="worldsTitle">Your world is waiting.</h1>
+              <p>Every destination has a different way to think. Pick the one that feels right today.</p>
+            </div>
+            <div class="filter-row" role="group" aria-label="Filter missions by subject">
+              <button class="filter-chip selected" type="button" data-filter="all">Everything</button>
+              <button class="filter-chip" type="button" data-filter="logic">Logic & patterns</button>
+              <button class="filter-chip" type="button" data-filter="academy">School subjects</button>
+              <button class="filter-chip" type="button" data-filter="business">Real-world skills</button>
+              <button class="filter-chip" type="button" data-filter="innovation">Tech & creativity</button>
+            </div>
+            <div class="world-grid world-grid-large" id="allWorldGrid"></div>
+            <div class="section-block discover-missions">
+              <div class="section-heading"><div><p class="section-kicker">READY WHEN YOU ARE</p><h2>Open missions</h2></div><span class="quiet-label" id="missionCount"></span></div>
+              <div class="mission-grid" id="allMissionGrid"></div>
+              <div class="empty-state" id="emptyMissions" hidden>No missions in this world just yet. Try another destination.</div>
+            </div>
+          </section>
+
+          <section class="view-panel" id="view-progress" aria-labelledby="progressTitle">
+            <div class="view-intro">
+              <p class="eyebrow"><span class="eyebrow-line"></span> LOOK HOW FAR YOU'VE COME</p>
+              <h1 id="progressTitle">Your progress, your pace.</h1>
+              <p>Every mission is a chance to practise a real skill. Here’s what you’ve explored so far.</p>
+            </div>
+            <div class="stats-grid">
+              <article class="stat-card stat-card-lilac"><span class="stat-icon">✦</span><span class="stat-label">EXPERIENCE EARNED</span><strong id="progressXp">0</strong><small>XP from completed missions</small></article>
+              <article class="stat-card stat-card-green"><span class="stat-icon">✓</span><span class="stat-label">MISSIONS FINISHED</span><strong id="progressMissions">0</strong><small>One thoughtful step at a time</small></article>
+              <article class="stat-card stat-card-peach"><span class="stat-icon">↗</span><span class="stat-label">BEST STREAK</span><strong id="progressStreak">0 days</strong><small>Showing up is a superpower</small></article>
+            </div>
+            <div class="progress-layout">
+              <section class="progress-card">
+                <div class="section-heading"><div><p class="section-kicker">A PATH OF YOUR OWN</p><h2>World exploration</h2></div><span class="quiet-label" id="worldsExplored">0 / 6 explored</span></div>
+                <div id="worldProgressList" class="world-progress-list"></div>
+              </section>
+              <section class="progress-card encouragement-card">
+                <span class="encouragement-icon" aria-hidden="true">✳</span>
+                <p class="section-kicker">A NOTE FOR YOUR JOURNEY</p>
+                <h2>Wonder is a skill, too.</h2>
+                <p>Take your time. Ask another question. Try a different path. That's what learning looks like.</p>
+                <button class="button button-dark" type="button" data-view="worlds">Find a new mission <span aria-hidden="true">↗</span></button>
+              </section>
+            </div>
+            <section class="section-block history-section"><div class="section-heading"><div><p class="section-kicker">YOUR RECENT ADVENTURES</p><h2>Mission log</h2></div></div><div id="missionHistory" class="history-list"></div></section>
+          </section>
+
+          <section class="view-panel" id="view-achievements" aria-labelledby="achievementsTitle">
+            <div class="view-intro">
+              <p class="eyebrow"><span class="eyebrow-line"></span> LITTLE WINS, BIG IDEAS</p>
+              <h1 id="achievementsTitle">Look at you, explorer.</h1>
+              <p>Achievements mark the moments you showed up, tried something new, and kept wondering.</p>
+            </div>
+            <div class="achievement-grid" id="achievementGrid"></div>
+          </section>
+
+          <section class="view-panel" id="view-premium" aria-labelledby="premiumTitle">
+            <div class="view-intro">
+              <p class="eyebrow"><span class="eyebrow-line"></span> MORE ROOM TO WONDER</p>
+              <h1 id="premiumTitle">A little more for curious minds.</h1>
+              <p>SmartMind stays free to explore. Premium is a preview of extra ways to learn—built around understanding, not pressure.</p>
+            </div>
+
+            <div class="premium-hero">
+              <div class="premium-hero-copy">
+                <span class="example-label"><span aria-hidden="true">✦</span> EXAMPLE MEMBERSHIP · NOT AVAILABLE FOR PURCHASE YET</span>
+                <h2>More ways to go<br><em>deeper.</em></h2>
+                <p>Try new practice paths, revisit tricky ideas, and keep your learning journey moving at your own pace.</p>
+                <a class="button button-light premium-scroll-link" href="#premiumPlans">See example plans <span aria-hidden="true">↓</span></a>
+              </div>
+              <div class="premium-orbit-art" aria-hidden="true"><span class="premium-orbit-ring"></span><span class="premium-orbit-ring"></span><span class="premium-orbit-core">✦</span><span class="premium-orbit-star">✧</span></div>
+            </div>
+
+            <section class="section-block premium-benefits" aria-labelledby="benefitsHeading">
+              <div class="section-heading">
+                <div><p class="section-kicker">THOUGHTFUL EXTRAS, NOT SHORTCUTS</p><h2 id="benefitsHeading">What Premium could include</h2></div>
+                <span class="quiet-label">EXAMPLE BENEFITS</span>
+              </div>
+              <div class="benefit-grid">
+                <article class="benefit-card"><span class="benefit-icon benefit-icon-lilac" aria-hidden="true">↗</span><h3>Guided learning paths</h3><p>Follow a clear sequence of practice missions and revisit ideas as you grow.</p></article>
+                <article class="benefit-card"><span class="benefit-icon benefit-icon-green" aria-hidden="true">◎</span><h3>More ways to practise</h3><p>Explore extra challenge packs and different ways to apply a skill.</p></article>
+                <article class="benefit-card"><span class="benefit-icon benefit-icon-peach" aria-hidden="true">✦</span><h3>Deeper progress insights</h3><p>See the skills you have practised and find a thoughtful next step.</p></article>
+              </div>
+              <p class="premium-availability-note">These are example benefits for planning. Premium features are not active yet, and all current learning missions remain free.</p>
+            </section>
+
+            <section class="section-block premium-plans" id="premiumPlans" aria-labelledby="plansHeading">
+              <div class="section-heading">
+                <div><p class="section-kicker">SAMPLE PRICING ONLY</p><h2 id="plansHeading">Choose a preview plan</h2></div>
+                <span class="quiet-label">NO CHARGE WILL BE MADE</span>
+              </div>
+              <div class="plan-grid">
+                <button class="plan-card" type="button" data-plan="monthly" aria-pressed="true">
+                  <span class="plan-select-indicator" aria-hidden="true"></span>
+                  <span class="plan-name">Monthly</span>
+                  <span class="plan-price">$4.99<small> / month</small></span>
+                  <span class="plan-description">Example price · billed monthly in a future release.</span>
+                </button>
+                <button class="plan-card" type="button" data-plan="yearly" aria-pressed="false">
+                  <span class="plan-select-indicator" aria-hidden="true"></span>
+                  <span class="plan-name">Yearly <span class="plan-save">EXAMPLE · SAVE 33%</span></span>
+                  <span class="plan-price">$39.99<small> / year</small></span>
+                  <span class="plan-description">Example price · equivalent to about $3.33 per month.</span>
+                </button>
+              </div>
+
+              <section class="payment-card" aria-labelledby="paymentHeading">
+                <div class="payment-heading">
+                  <span class="payment-icon" aria-hidden="true">↗</span>
+                  <div><p class="section-kicker">PAYMENT PREVIEW</p><h3 id="paymentHeading">Review your example order</h3></div>
+                </div>
+                <div class="payment-line"><span>SmartMind Premium <span id="selectedPlanName">monthly plan</span></span><strong id="selectedPlanPrice">$4.99 / month</strong></div>
+                <div class="payment-example-note"><span aria-hidden="true">ⓘ</span><p>This is a sample checkout preview. No card details are requested, no payment is processed, and no subscription will be created.</p></div>
+                <button class="button button-dark" id="previewCheckout" type="button">Preview checkout <span aria-hidden="true">↗</span></button>
+              </section>
+            </section>
+          </section>
+        </div>
+        <footer class="footer"><span>SMARTMIND · BUILT FOR THE JOY OF FIGURING IT OUT</span><span>Learning belongs to everyone.</span></footer>
+      </main>
+    </div>
+
+    <div class="modal-backdrop" id="challengeModal" hidden>
+      <section class="challenge-dialog" role="dialog" aria-modal="true" aria-labelledby="challengeTitle">
+        <div class="dialog-top">
+          <span class="dialog-brand"><span class="mini-mark">✦</span> SMARTMIND MISSION</span>
+          <button class="icon-button close-modal" type="button" aria-label="Close mission">×</button>
+        </div>
+        <div class="challenge-progress"><span id="challengeProgressLabel">QUESTION 1 OF 3</span><span class="challenge-xp">✦ <span id="challengeXp">+20</span> XP</span></div>
+        <div class="challenge-progress-track"><span id="challengeProgressBar"></span></div>
+        <div id="challengeStage"></div>
+        <div class="dialog-footer"><span>Take your time. Think it through.</span><span class="dialog-shortcut">ESC TO CLOSE</span></div>
+      </section>
+    </div>
+
+    <div class="modal-backdrop" id="paymentModal" hidden>
+      <section class="challenge-dialog payment-dialog" role="dialog" aria-modal="true" aria-labelledby="paymentDialogTitle">
+        <div class="dialog-top">
+          <span class="dialog-brand"><span class="mini-mark">✦</span> SMARTMIND · CHECKOUT PREVIEW</span>
+          <button class="icon-button" id="closePaymentPreview" type="button" aria-label="Close checkout preview">×</button>
+        </div>
+        <div class="payment-preview-body">
+          <span class="payment-preview-icon" aria-hidden="true">◎</span>
+          <p class="section-kicker">YOUR EXAMPLE SELECTION</p>
+          <h2 id="paymentDialogTitle">No payment has been taken.</h2>
+          <p id="paymentDialogPlan">Example monthly plan · $4.99 / month</p>
+          <div class="payment-example-note"><span aria-hidden="true">ⓘ</span><p>Checkout is not connected yet. This preview does not save payment details or start a subscription.</p></div>
+          <button class="button button-dark" id="finishPaymentPreview" type="button">Back to Premium</button>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
