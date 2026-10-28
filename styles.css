@@ -20,6 +20,8 @@ button, a { font: inherit; }
 button { color: inherit; }
 button:focus-visible, a:focus-visible { outline: 3px solid #8eac98; outline-offset: 3px; }
 button:disabled { cursor: not-allowed; }
+.skip-link { position: fixed; top: 8px; left: 8px; z-index: 80; padding: 10px 14px; transform: translateY(-160%); border-radius: 6px; background: #244b3d; color: #fff; font-size: 13px; font-weight: 700; }
+.skip-link:focus { transform: translateY(0); }
 .app-shell { width: 100%; min-height: 100vh; }
 
 .sidebar {
@@ -152,7 +154,7 @@ h1, h2 { font-family: var(--display); }
 .mission-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .mission-world-tag { display: inline-flex; align-items: center; gap: 6px; color: #7b867d; font-size: 8px; font-weight: 600; }
 .mission-world-tag .world-dot { width: 6px; height: 6px; }
-.difficulty { padding: 4px 7px; border-radius: 10px; background: #f3f5f2; color: #828b82; font-size: 7px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase; }
+.difficulty { max-width: 48%; padding: 4px 7px; border-radius: 10px; background: #f3f5f2; color: #657267; font-size: 7px; font-weight: 700; letter-spacing: .35px; line-height: 1.35; text-align: center; text-transform: uppercase; }
 .mission-card h3 { margin: 13px 0 5px; color: #354139; font-family: var(--display); font-size: 13px; font-weight: 700; letter-spacing: -.3px; }
 .mission-card > p { margin: 0; color: #89928a; font-size: 9px; line-height: 1.55; }
 .mission-card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: auto; padding-top: 12px; }
@@ -262,6 +264,57 @@ h1, h2 { font-family: var(--display); }
 .dialog-shortcut { font-size: 7px; letter-spacing: .7px; }
 .toast { position: fixed; right: 22px; bottom: 20px; z-index: 60; max-width: min(360px,calc(100vw - 32px)); padding: 11px 15px; transform: translateY(12px); border: 1px solid #446d52; border-radius: 8px; background: #2c543f; box-shadow: 0 8px 24px #17271d40; color: #f5faf3; font-size: 10px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s; }
 .toast.show { transform: translateY(0); opacity: 1; }
+
+.pathway-section { margin: 15px 0 29px; }
+.pathway-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 11px; }
+.pathway-card { display: grid; grid-template-columns: 35px minmax(0,1fr) auto; align-items: center; gap: 10px; padding: 14px; border: 1px solid #e6ebe6; border-radius: 9px; background: #fff; }
+.pathway-icon { display: grid; width: 34px; height: 34px; grid-row: span 2; place-items: center; border-radius: 9px; background: #edf3ee; color: #537658; font-family: var(--display); font-size: 14px; font-weight: 700; }
+.pathway-copy { display: grid; gap: 4px; }
+.pathway-copy strong { font-family: var(--display); font-size: 11px; }
+.pathway-copy small { color: #6f7a71; font-size: 8px; line-height: 1.45; }
+.pathway-steps { color: #667666; font-size: 8px; white-space: nowrap; }
+.pathway-track { height: 4px; grid-column: 2 / 4; overflow: hidden; border-radius: 5px; background: #edf0ec; }
+.pathway-track span, .skill-progress-track span { display: block; height: 100%; border-radius: inherit; background: #6c9471; transition: width .25s ease; }
+.pathway-link { display: flex; min-height: 32px; grid-column: 1 / 4; align-items: center; justify-content: space-between; gap: 6px; padding: 6px 0 0; border: 0; border-top: 1px solid #edf0ed; background: transparent; color: #426d4e; text-align: left; font-size: 8px; font-weight: 700; cursor: pointer; }
+.pathway-link:hover { color: #244b3d; }
+.skills-section { margin-top: 32px; }
+.skill-progress-list { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; }
+.skill-progress-item { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: 9px 13px; padding: 14px; border: 1px solid #e7ece7; border-radius: 8px; background: #fff; }
+.skill-progress-name { display: grid; gap: 5px; }
+.skill-progress-name strong { font-size: 10px; }
+.skill-progress-name small { color: #68746b; font-size: 8px; }
+.skill-progress-name .skill-practice-trend { color: #526b55; }
+.skill-progress-track { height: 5px; grid-column: 1 / 2; overflow: hidden; border-radius: 5px; background: #edf0ed; }
+.skill-progress-value { grid-column: 2 / 3; grid-row: 2 / 3; color: #536e52; font-size: 10px; font-weight: 700; }
+.skills-disclaimer { margin: 10px 0 0; color: #68746b; font-size: 9px; line-height: 1.6; }
+.learner-profile-card { max-width: 760px; padding: 24px; border: 1px solid #e5ebe5; border-radius: 11px; background: #fff; }
+.profile-field-label, .interest-fieldset legend { display: block; margin: 0 0 8px; color: #344239; font-size: 11px; font-weight: 700; }
+.profile-field-label:not(:first-child) { margin-top: 20px; }
+.profile-field-label > span, .interest-fieldset legend > span { margin-left: 6px; color: #68756b; font-size: 8px; font-weight: 600; letter-spacing: .6px; }
+.profile-text-input, .profile-select { width: min(420px,100%); min-height: 43px; padding: 10px 12px; border: 1px solid #dce5dc; border-radius: 7px; background: #fff; color: #27362c; font: inherit; font-size: 12px; }
+.profile-text-input:focus, .profile-select:focus, .numeric-answer-input:focus { outline: 3px solid #8eac98; outline-offset: 2px; border-color: #537c5a; }
+.interest-fieldset { margin: 23px 0 0; padding: 0; border: 0; }
+.interest-fieldset legend { margin-bottom: 12px; }
+.interest-fieldset legend > span { display: block; margin: 5px 0 0; }
+.interest-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
+.interest-option { display: flex; min-height: 43px; align-items: center; gap: 10px; padding: 9px 11px; border: 1px solid #e4eae3; border-radius: 7px; color: #415044; font-size: 10px; cursor: pointer; }
+.interest-option:has(input:checked) { border-color: #78977a; background: #f2f6f0; }
+.interest-option input { width: 16px; height: 16px; accent-color: #426e4c; }
+.profile-privacy-note { display: flex; gap: 9px; margin: 18px 0; padding: 11px; border-radius: 7px; background: #f3f5f0; color: #5b725c; }
+.profile-privacy-note > span { font-size: 12px; }
+.profile-privacy-note p { margin: 0; color: #5f6e60; font-size: 9px; line-height: 1.6; }
+.numeric-answer-label { display: block; margin-bottom: 7px; color: #48554a; font-size: 10px; font-weight: 700; }
+.numeric-answer-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.numeric-answer-input { width: min(210px,100%); min-height: 42px; padding: 9px 11px; border: 1px solid #e0e8df; border-radius: 7px; background: #fff; color: #354139; font: inherit; font-size: 12px; }
+.hint-controls { margin-top: 13px; }
+.hint-toggle { min-height: 32px; padding: 5px 0; border: 0; background: transparent; color: #426d4e; font-size: 9px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.hint-content { margin: 5px 0 0; padding: 10px 12px; border-radius: 7px; background: #f0f4eb; color: #51654e; font-size: 9px; line-height: 1.6; }
+.order-instructions { margin: 0 0 9px; color: #657267; font-size: 9px; line-height: 1.5; }
+.order-list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+.order-item { display: flex; min-height: 42px; align-items: center; justify-content: space-between; gap: 10px; padding: 6px 8px 6px 11px; border: 1px solid #e3e9e2; border-radius: 7px; background: #fff; color: #4a574d; font-size: 10px; }
+.order-controls { display: flex; gap: 4px; }
+.order-move { display: grid; width: 30px; height: 30px; place-items: center; border: 1px solid #e0e7df; border-radius: 6px; background: #f7f9f6; color: #4a6b4d; font-size: 14px; cursor: pointer; }
+.order-move:disabled { opacity: .4; }
 
 .premium-hero { position: relative; display: flex; min-height: 285px; overflow: hidden; align-items: center; padding: 35px 40px; border-radius: 13px; background: linear-gradient(116deg,#3b3020,#574323 66%,#6b5430); color: #fffaf0; isolation: isolate; }
 .premium-hero::before { position: absolute; inset: 0; z-index: -1; background: radial-gradient(ellipse at 82% 55%,#c49b4b30,transparent 35%),linear-gradient(120deg,transparent 50%,#ffffff08 50%,transparent 80%); content: ""; }
@@ -402,6 +455,15 @@ h1, h2 { font-family: var(--display); }
   .payment-line { font-size: 12px; }
   .payment-line strong { font-size: 13px; }
   .payment-example-note p { font-size: 10px; }
+  .pathway-card { padding: 16px; }
+  .pathway-copy strong { font-size: 13px; }
+  .pathway-copy small, .pathway-steps { font-size: 9px; }
+  .pathway-link { font-size: 9px; }
+  .skill-progress-item { padding: 16px; }
+  .skill-progress-name strong { font-size: 11px; }
+  .skill-progress-name small { font-size: 9px; }
+  .skill-progress-name .skill-practice-trend { font-size: 8px; }
+  .skills-disclaimer { font-size: 10px; }
   .footer { padding-right: clamp(32px,4vw,66px); padding-left: clamp(32px,4vw,66px); font-size: 9px; }
 }
 @media (max-width: 1100px) {
@@ -466,6 +528,7 @@ h1, h2 { font-family: var(--display); }
   .mission-card { min-height: 165px; padding: 11px; }
   .mission-card h3 { font-size: 11px; }
   .mission-card > p { font-size: 8px; }
+  .difficulty { max-width: 52%; padding: 3px 5px; font-size: 6px; }
   .bottom-strip { flex-wrap: wrap; gap: 10px; padding: 12px; }
   .bottom-strip > div { min-width: calc(100% - 48px); }
   .bottom-strip .text-link { margin-left: 42px; }
@@ -479,6 +542,19 @@ h1, h2 { font-family: var(--display); }
   .stat-card strong { font-size: 21px; }
   .stat-card small { font-size: 8px; line-height: 1.4; }
   .progress-layout { grid-template-columns: 1fr; gap: 10px; }
+  .pathway-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 7px; }
+  .pathway-card { grid-template-columns: 29px minmax(0,1fr); gap: 8px; padding: 10px; }
+  .pathway-icon { width: 28px; height: 28px; font-size: 12px; }
+  .pathway-copy strong { font-size: 9px; }
+  .pathway-copy small { font-size: 7px; }
+  .pathway-steps { grid-column: 2 / 3; font-size: 7px; }
+  .pathway-track { grid-column: 1 / 3; }
+  .pathway-link { grid-column: 1 / 3; min-height: 33px; font-size: 7px; }
+  .skill-progress-list { grid-template-columns: 1fr; gap: 7px; }
+  .learner-profile-card { padding: 16px; }
+  .profile-field-label, .interest-fieldset legend { font-size: 10px; }
+  .interest-grid { grid-template-columns: 1fr; gap: 7px; }
+  .interest-option { min-height: 42px; }
   .progress-card { padding: 15px; }
   .achievement-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 9px; }
   .premium-hero { min-height: 270px; padding: 25px 20px; }
@@ -516,7 +592,7 @@ h1, h2 { font-family: var(--display); }
   .world-card p { line-height: 1.35; }
   .mission-card { padding: 9px; }
   .mission-world-tag { font-size: 7px; }
-  .difficulty { padding: 3px 5px; font-size: 6px; }
+  .difficulty { max-width: 54%; padding: 3px 5px; font-size: 6px; }
   .hero-card { padding-right: 14px; padding-left: 16px; }
   .hero-copy { max-width: 95%; }
   .hero-copy h2 { font-size: 30px; }

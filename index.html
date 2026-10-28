@@ -10,6 +10,7 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+    <a class="skip-link" href="#mainContent">Skip to learning content</a>
     <div class="app-shell">
       <aside class="sidebar" id="sidebar" aria-label="Main navigation">
         <a class="brand" href="#home" data-view="home" aria-label="SmartMind home">
@@ -36,6 +37,9 @@
           <button class="nav-link premium-nav-link" type="button" data-view="premium">
             <span class="nav-icon" aria-hidden="true">✦</span><span>Premium</span><span class="nav-badge">PREVIEW</span>
           </button>
+          <button class="nav-link" type="button" data-view="learning-profile">
+            <span class="nav-icon" aria-hidden="true">◎</span><span>Learning profile</span>
+          </button>
         </nav>
 
         <div class="sidebar-divider"></div>
@@ -55,22 +59,22 @@
             <p>Curiosity looks good on you.</p>
             <span>Keep exploring. Your next big idea is out there.</span>
           </div>
-          <button class="profile-button" type="button" data-view="progress">
+          <button class="profile-button" type="button" data-view="learning-profile">
             <span class="avatar">A</span>
-            <span class="profile-copy"><strong>Alex Morgan</strong><small>Curious explorer</small></span>
+            <span class="profile-copy"><strong id="sidebarLearnerName">Alex Morgan</strong><small>Learning profile</small></span>
             <span class="profile-more" aria-hidden="true">···</span>
           </button>
         </div>
       </aside>
 
-      <main class="main-content">
+      <main class="main-content" id="mainContent" tabindex="-1">
         <header class="topbar">
           <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open navigation" aria-expanded="false">☰</button>
           <div class="breadcrumb"><span>MY JOURNEY</span><span class="breadcrumb-slash">/</span><strong id="breadcrumbCurrent">Overview</strong></div>
           <div class="topbar-actions">
             <div class="streak-pill" title="Days with a completed mission"><span aria-hidden="true">✦</span><strong id="streakCount">0</strong><span>day streak</span></div>
             <button class="icon-button" id="helpButton" type="button" aria-label="How SmartMind works" title="How SmartMind works">?</button>
-            <span class="top-avatar" aria-label="Alex Morgan">A</span>
+            <span class="top-avatar" id="topAvatar" aria-label="Alex Morgan">A</span>
           </div>
         </header>
 
@@ -79,7 +83,7 @@
             <div class="welcome-row">
               <div>
                 <p class="eyebrow"><span class="eyebrow-line"></span><span id="todayDate"></span></p>
-                <h1 id="welcomeTitle">Good morning, Alex <span class="wave" aria-hidden="true">✳</span></h1>
+                <h1 id="welcomeTitle">Good morning, <span id="learnerGreeting">Alex</span> <span class="wave" aria-hidden="true">✳</span></h1>
                 <p class="welcome-subtitle">A little curiosity can take you a long way. Where to today?</p>
               </div>
               <button class="date-chip" type="button" aria-label="Today's date"><span aria-hidden="true">◷</span> YOUR LEARNING DAY</button>
@@ -90,7 +94,7 @@
                 <span class="hero-kicker"><span class="live-dot"></span> YOUR NEXT CHAPTER</span>
                 <h2>Small steps.<br><em>Remarkable</em> thinking.</h2>
                 <p>Follow your curiosity, take on a thoughtful challenge, and see what you can figure out.</p>
-                <button class="button button-light" type="button" data-start-challenge="pattern-pilot">Pick up where you left off <span aria-hidden="true">↗</span></button>
+                <button class="button button-light" id="heroMissionButton" type="button" data-start-challenge="pattern-pilot">Find your next mission <span aria-hidden="true">↗</span></button>
                 <div class="hero-footnote"><span class="footnote-icon" aria-hidden="true">✦</span> No rush. Understanding is the real win.</div>
               </div>
               <div class="hero-art" aria-hidden="true">
@@ -114,8 +118,8 @@
 
             <section class="section-block mission-section" aria-labelledby="missionHeading">
               <div class="section-heading">
-                <div><p class="section-kicker">A GOOD PLACE TO START</p><h2 id="missionHeading">Made for your next “aha!”</h2></div>
-                <span class="quiet-label">SHORT MISSIONS · REAL SKILLS</span>
+                <div><p class="section-kicker" id="homeMissionSummary">A THOUGHTFUL NEXT STEP</p><h2 id="missionHeading">Picked for your curiosity</h2></div>
+                <button class="text-link" type="button" data-show-all-missions>Browse all missions <span aria-hidden="true">↗</span></button>
               </div>
               <div class="mission-grid" id="homeMissionGrid"></div>
             </section>
@@ -139,7 +143,16 @@
               <button class="filter-chip" type="button" data-filter="academy">School subjects</button>
               <button class="filter-chip" type="button" data-filter="business">Real-world skills</button>
               <button class="filter-chip" type="button" data-filter="innovation">Tech & creativity</button>
+              <button class="filter-chip" type="button" data-filter="Mathematics">Maths</button>
+              <button class="filter-chip" type="button" data-filter="Reading">Reading</button>
+              <button class="filter-chip" type="button" data-filter="Science">Science</button>
+              <button class="filter-chip" type="button" data-filter="Geography">Geography</button>
+              <button class="filter-chip" type="button" data-filter="Financial literacy">Money skills</button>
             </div>
+            <section class="section-block pathway-section" aria-labelledby="pathwayHeading">
+              <div class="section-heading"><div><p class="section-kicker">SMALL STEPS IN A THOUGHTFUL ORDER</p><h2 id="pathwayHeading">Subject pathways</h2></div><span class="quiet-label">PICK UP WHERE YOU LEFT OFF</span></div>
+              <div class="pathway-grid" id="pathwayGrid"></div>
+            </section>
             <div class="world-grid world-grid-large" id="allWorldGrid"></div>
             <div class="section-block discover-missions">
               <div class="section-heading"><div><p class="section-kicker">READY WHEN YOU ARE</p><h2>Open missions</h2></div><span class="quiet-label" id="missionCount"></span></div>
@@ -172,6 +185,11 @@
                 <button class="button button-dark" type="button" data-view="worlds">Find a new mission <span aria-hidden="true">↗</span></button>
               </section>
             </div>
+            <section class="section-block skills-section" aria-labelledby="skillsHeading">
+              <div class="section-heading"><div><p class="section-kicker">PRACTICE, MADE VISIBLE</p><h2 id="skillsHeading">Skills you have practised</h2></div><span class="quiet-label">ACCURACY IS A PRACTICE SNAPSHOT, NOT A GRADE</span></div>
+              <div class="skill-progress-list" id="skillProgressList" aria-live="polite"></div>
+              <p class="skills-disclaimer">Practice results show how answers went in completed attempts. They are not a formal assessment or a measure of a learner's ability.</p>
+            </section>
             <section class="section-block history-section"><div class="section-heading"><div><p class="section-kicker">YOUR RECENT ADVENTURES</p><h2>Mission log</h2></div></div><div id="missionHistory" class="history-list"></div></section>
           </section>
 
@@ -182,6 +200,32 @@
               <p>Achievements mark the moments you showed up, tried something new, and kept wondering.</p>
             </div>
             <div class="achievement-grid" id="achievementGrid"></div>
+          </section>
+
+          <section class="view-panel" id="view-learning-profile" aria-labelledby="profileTitle">
+            <div class="view-intro">
+              <p class="eyebrow"><span class="eyebrow-line"></span> YOUR JOURNEY, YOUR CHOICES</p>
+              <h1 id="profileTitle">Make it yours.</h1>
+              <p>Choose an age range and subjects you enjoy. Subject choices tune your mission suggestions. This version does not adjust questions by age or restrict what you can explore.</p>
+            </div>
+            <form class="learner-profile-card" id="profileForm">
+              <label class="profile-field-label" for="learnerNameInput">What should we call you?</label>
+              <input class="profile-text-input" id="learnerNameInput" name="learnerName" type="text" maxlength="32" autocomplete="nickname" required>
+              <label class="profile-field-label" for="ageRangeInput">Age range <span>OPTIONAL</span></label>
+              <select class="profile-select" id="ageRangeInput" name="ageRange">
+                <option value="">Prefer not to say</option>
+                <option value="under-13">Under 13</option>
+                <option value="13-15">13–15</option>
+                <option value="16-18">16–18</option>
+                <option value="19-plus">19 or older</option>
+              </select>
+              <fieldset class="interest-fieldset">
+                <legend>What are you curious about? <span>CHOOSE ANY THAT INTEREST YOU</span></legend>
+                <div class="interest-grid" id="interestOptions"></div>
+              </fieldset>
+              <div class="profile-privacy-note"><span aria-hidden="true">ⓘ</span><p>Your choices are saved in this browser only. SmartMind does not ask for your birth date, school, or contact details.</p></div>
+              <button class="button button-dark" type="submit">Save learning profile <span aria-hidden="true">✓</span></button>
+            </form>
           </section>
 
           <section class="view-panel" id="view-premium" aria-labelledby="premiumTitle">
@@ -258,7 +302,7 @@
         </div>
         <div class="challenge-progress"><span id="challengeProgressLabel">QUESTION 1 OF 3</span><span class="challenge-xp">✦ <span id="challengeXp">+20</span> XP</span></div>
         <div class="challenge-progress-track"><span id="challengeProgressBar"></span></div>
-        <div id="challengeStage"></div>
+        <div id="challengeStage" aria-live="polite" aria-atomic="false"></div>
         <div class="dialog-footer"><span>Take your time. Think it through.</span><span class="dialog-shortcut">ESC TO CLOSE</span></div>
       </section>
     </div>
